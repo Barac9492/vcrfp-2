@@ -1,9 +1,9 @@
-import RFPUploadLanding from './components/RFPUploadLanding'
+import ProfessionalLanding from './components/ProfessionalLanding'
 import './App.css'
 
 function App() {
   return (
-    <RFPUploadLanding />
+    <ProfessionalLanding />
   )
 }
 
