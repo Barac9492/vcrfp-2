@@ -1,9 +1,9 @@
-import DataBookDashboard from './components/DataBookDashboard'
+import RFPUploadLanding from './components/RFPUploadLanding'
 import './App.css'
 
 function App() {
   return (
-    <DataBookDashboard />
+    <RFPUploadLanding />
   )
 }
 
