@@ -1,4 +1,4 @@
-import { RFPRequirements, ValidationResult, ValidationItem, MasterData } from '../types/rfp';
+import type { RFPRequirements, ValidationResult, MasterData } from '../types/rfp';
 
 export class ValidationService {
   validateRequirements(requirements: RFPRequirements, masterData: MasterData): ValidationResult {
@@ -241,7 +241,7 @@ export class ValidationService {
     }
 
     // 투자 성과 검증
-    const activeInvestments = investments.filter(inv => inv.현재상태 === '운영중');
+    investments.filter(inv => inv.현재상태 === '운영중');
     const exitedInvestments = investments.filter(inv => 
       inv.현재상태.includes('EXIT') || inv.현재상태.includes('IPO') || inv.현재상태.includes('M&A')
     );

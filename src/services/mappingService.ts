@@ -1,4 +1,4 @@
-import { DataMappingRule, MasterData } from '../types/rfp';
+import type { DataMappingRule, MasterData } from '../types/rfp';
 
 export class MappingService {
   private readonly MAPPING_STORAGE_KEY = 'rfp-mappings';

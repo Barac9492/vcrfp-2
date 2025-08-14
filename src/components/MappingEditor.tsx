@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useMapping } from '../hooks/useMapping';
-import { DataMappingRule } from '../types/rfp';
 
 interface MappingEditorProps {
   rfpId: string;

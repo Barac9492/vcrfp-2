@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { ExcelTemplate, MasterData, RFP } from '../types/rfp';
+import type { ExcelTemplate, MasterData, RFP } from '../types/rfp';
 import { ExcelService } from '../services/excelService';
 
 export const useExcel = () => {
@@ -93,7 +93,7 @@ export const useExcel = () => {
   const previewExcelData = useCallback(async (
     template: ExcelTemplate,
     masterData: MasterData,
-    mappedData: any
+    _mappedData: any
   ) => {
     setLoading(true);
     setError(null);

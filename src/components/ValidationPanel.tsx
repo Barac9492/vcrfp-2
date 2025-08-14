@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useRFP } from '../hooks/useRFP';
+import { useState } from 'react';
 import { ValidationService } from '../services/validationService';
-import { RFP, ValidationResult, MasterData } from '../types/rfp';
+import type { RFP, ValidationResult, MasterData } from '../types/rfp';
 
 interface ValidationPanelProps {
   rfp: RFP;

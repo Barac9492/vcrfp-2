@@ -1,4 +1,4 @@
-import { RFP, RFPRequirements, ValidationResult, ValidationItem, MasterData } from '../types/rfp';
+import type { RFP, RFPRequirements, ValidationResult, MasterData } from '../types/rfp';
 import { StorageService } from './storageService';
 
 export class RFPService {
@@ -117,7 +117,7 @@ export class RFPService {
     return result;
   }
   
-  private calculateGPOutlay(data: MasterData): number {
+  private calculateGPOutlay(_data: MasterData): number {
     // GP 출자비율 계산 로직 (임시)
     return 1.5; // 예시값
   }

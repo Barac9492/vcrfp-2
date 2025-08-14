@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useExcel } from '../hooks/useExcel';
 import { useMapping } from '../hooks/useMapping';
-import { RFP, MasterData } from '../types/rfp';
+import type { RFP, MasterData } from '../types/rfp';
 
 interface ExcelGeneratorProps {
   rfp: RFP;

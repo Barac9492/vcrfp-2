@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRFP } from '../hooks/useRFP';
-import { RFP, RFPRequirements } from '../types/rfp';
+import type { RFP, RFPRequirements } from '../types/rfp';
 
 interface RFPEditorProps {
   rfp: RFP;

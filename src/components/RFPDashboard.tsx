@@ -6,7 +6,7 @@ import RFPAnalysis from './RFPAnalysis';
 import MappingEditor from './MappingEditor';
 import ValidationPanel from './ValidationPanel';
 import ExcelGenerator from './ExcelGenerator';
-import { RFP } from '../types/rfp';
+import type { RFP } from '../types/rfp';
 
 type ViewMode = 'list' | 'editor' | 'analysis' | 'mapping' | 'validation' | 'excel';
 

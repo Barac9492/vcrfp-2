@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { DataMappingRule, MasterData } from '../types/rfp';
+import type { DataMappingRule, MasterData } from '../types/rfp';
 import { MappingService } from '../services/mappingService';
 
 export const useMapping = () => {

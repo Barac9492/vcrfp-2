@@ -1,5 +1,5 @@
 import * as XLSX from 'xlsx';
-import { ExcelTemplate, MasterData, RFP } from '../types/rfp';
+import type { ExcelTemplate, MasterData, RFP } from '../types/rfp';
 
 export class ExcelService {
   generateExcelFromTemplate(
@@ -71,13 +71,13 @@ export class ExcelService {
         rowData.push(this.generateCompanyOverviewData(sheetConfig, masterData, mappedData));
         break;
       case '펀드실적':
-        rowData.push(...this.generateFundPerformanceData(sheetConfig, masterData, mappedData));
+        rowData.push(...this.generateFundPerformanceData(sheetConfig, masterData));
         break;
       case '핵심인력':
-        rowData.push(...this.generateKeyPersonnelData(sheetConfig, masterData, mappedData));
+        rowData.push(...this.generateKeyPersonnelData(sheetConfig, masterData));
         break;
       case '투자실적':
-        rowData.push(...this.generateInvestmentData(sheetConfig, masterData, mappedData));
+        rowData.push(...this.generateInvestmentData(sheetConfig, masterData));
         break;
       default:
         // 커스텀 시트의 경우 매핑된 데이터 사용
@@ -113,8 +113,7 @@ export class ExcelService {
 
   private generateFundPerformanceData(
     sheetConfig: ExcelTemplate['sheets'][0],
-    masterData: MasterData,
-    mappedData: any
+    masterData: MasterData
   ): any[][] {
     return masterData.펀드실적.map(fund => 
       sheetConfig.columns.map(col => {
@@ -138,8 +137,7 @@ export class ExcelService {
 
   private generateKeyPersonnelData(
     sheetConfig: ExcelTemplate['sheets'][0],
-    masterData: MasterData,
-    mappedData: any
+    masterData: MasterData
   ): any[][] {
     return masterData.핵심인력.map(person => 
       sheetConfig.columns.map(col => {
@@ -163,8 +161,7 @@ export class ExcelService {
 
   private generateInvestmentData(
     sheetConfig: ExcelTemplate['sheets'][0],
-    masterData: MasterData,
-    mappedData: any
+    masterData: MasterData
   ): any[][] {
     return masterData.투자실적.map(investment => 
       sheetConfig.columns.map(col => {
@@ -196,9 +193,9 @@ export class ExcelService {
   }
 
   private applyCellFormatting(
-    worksheet: XLSX.WorkSheet,
-    sheetConfig: ExcelTemplate['sheets'][0],
-    rowCount: number
+    _worksheet: XLSX.WorkSheet,
+    _sheetConfig: ExcelTemplate['sheets'][0],
+    _rowCount: number
   ): void {
     sheetConfig.columns.forEach((col, colIndex) => {
       for (let rowIndex = 1; rowIndex < rowCount; rowIndex++) {
@@ -253,8 +250,8 @@ export class ExcelService {
   }
 
   private applyValidation(
-    worksheet: XLSX.WorkSheet,
-    sheetConfig: ExcelTemplate['sheets'][0]
+    _worksheet: XLSX.WorkSheet,
+    _sheetConfig: ExcelTemplate['sheets'][0]
   ): void {
     // Excel의 데이터 유효성 검사는 라이브러리 제한으로 인해 간단한 형태만 구현
     sheetConfig.columns.forEach((col, colIndex) => {

@@ -1,5 +1,5 @@
 import { useRFP } from '../hooks/useRFP';
-import { RFP } from '../types/rfp';
+import type { RFP } from '../types/rfp';
 
 interface RFPListProps {
   onSelectRFP: (rfp: RFP) => void;

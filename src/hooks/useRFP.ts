@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { RFP, RFPRequirements, ValidationResult, MasterData } from '../types/rfp';
+import type { RFP, RFPRequirements, ValidationResult, MasterData } from '../types/rfp';
 import { RFPService } from '../services/rfpService';
 
 export const useRFP = () => {

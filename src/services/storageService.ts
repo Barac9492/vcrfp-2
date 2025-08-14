@@ -1,21 +1,9 @@
-import { RFP, MasterData, DataMappingRule } from '../types/rfp';
+import type { RFP, MasterData, DataMappingRule } from '../types/rfp';
 
 // IndexedDB 스키마 정의
 const DB_NAME = 'VCRFP_DB';
 const DB_VERSION = 1;
 
-interface DBSchema {
-  rfps: RFP;
-  masterData: MasterData;
-  mappings: DataMappingRule;
-  files: {
-    id: string;
-    name: string;
-    type: string;
-    data: ArrayBuffer;
-    uploadedAt: Date;
-  };
-}
 
 export class StorageService {
   private db: IDBDatabase | null = null;
@@ -51,7 +39,7 @@ export class StorageService {
 
         // 매핑 규칙 저장소
         if (!db.objectStoreNames.contains('mappings')) {
-          const mappingStore = db.createObjectStore('mappings', { keyPath: 'rfpId' });
+          db.createObjectStore('mappings', { keyPath: 'rfpId' });
         }
 
         // 파일 저장소 (대용량 파일용)

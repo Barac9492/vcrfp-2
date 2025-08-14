@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRFP } from '../hooks/useRFP';
-import { RFP } from '../types/rfp';
+import type { RFP } from '../types/rfp';
 
 interface RFPAnalysisProps {
   rfp: RFP;
