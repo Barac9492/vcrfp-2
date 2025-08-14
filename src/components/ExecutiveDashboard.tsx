@@ -2,45 +2,31 @@ import { useState, useEffect } from 'react';
 import { useRFP } from '../hooks/useRFP';
 import type { RFP } from '../types/rfp';
 
-interface DataBookMetrics {
-  totalDataBooks: number;
-  documentsInProgress: number;
-  readyForSubmission: number;
-  requiresReview: number;
-  totalFundValue: number;
-  avgCompletionTime: number;
-}
-
-interface DocumentSection {
-  id: string;
-  title: string;
-  status: 'complete' | 'in-progress' | 'pending' | 'requires-review';
-  completionPercentage: number;
-  lastUpdated: Date;
-  requiredDocuments: number;
-  completedDocuments: number;
+interface ExecutiveMetrics {
+  totalRFPs: number;
+  activeDeadlines: number;
+  submissionReady: number;
+  totalFundSize: number;
+  successRate: number;
+  avgTimeToSubmission: number;
 }
 
 const ExecutiveDashboard = () => {
   const { rfps, loading } = useRFP();
-  const [metrics, setMetrics] = useState<DataBookMetrics>({
-    totalDataBooks: 0,
-    documentsInProgress: 0,
-    readyForSubmission: 0,
-    requiresReview: 0,
-    totalFundValue: 0,
-    avgCompletionTime: 0
+  const [metrics, setMetrics] = useState<ExecutiveMetrics>({
+    totalRFPs: 0,
+    activeDeadlines: 0,
+    submissionReady: 0,
+    totalFundSize: 0,
+    successRate: 0,
+    avgTimeToSubmission: 0
   });
 
   useEffect(() => {
     if (rfps.length > 0) {
       const now = new Date();
       const activeRFPs = rfps.filter(rfp => new Date(rfp.requirements.기본정보.마감일) > now);
-      const urgentRFPs = rfps.filter(rfp => {
-        const deadline = new Date(rfp.requirements.기본정보.마감일);
-        const daysLeft = Math.ceil((deadline.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-        return daysLeft <= 7 && daysLeft >= 0;
-      });
+      // Note: urgentRFPs calculation available for future implementation if needed
 
       setMetrics({
         totalRFPs: rfps.length,
