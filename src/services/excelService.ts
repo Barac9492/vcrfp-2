@@ -193,9 +193,9 @@ export class ExcelService {
   }
 
   private applyCellFormatting(
-    _worksheet: XLSX.WorkSheet,
-    _sheetConfig: ExcelTemplate['sheets'][0],
-    _rowCount: number
+    worksheet: XLSX.WorkSheet,
+    sheetConfig: ExcelTemplate['sheets'][0],
+    rowCount: number
   ): void {
     sheetConfig.columns.forEach((col, colIndex) => {
       for (let rowIndex = 1; rowIndex < rowCount; rowIndex++) {
@@ -251,10 +251,10 @@ export class ExcelService {
 
   private applyValidation(
     _worksheet: XLSX.WorkSheet,
-    _sheetConfig: ExcelTemplate['sheets'][0]
+    sheetConfig: ExcelTemplate['sheets'][0]
   ): void {
     // Excel의 데이터 유효성 검사는 라이브러리 제한으로 인해 간단한 형태만 구현
-    sheetConfig.columns.forEach((col, colIndex) => {
+    sheetConfig.columns.forEach((col, _colIndex) => {
       if (!col.validation) return;
       
       // 여기서 실제 유효성 검사 규칙을 적용할 수 있습니다
@@ -263,7 +263,7 @@ export class ExcelService {
   }
 
   private applySpecialRequirements(
-    worksheet: XLSX.WorkSheet,
+    _worksheet: XLSX.WorkSheet,
     requirements: ExcelTemplate['sheets'][0]['specialRequirements']
   ): void {
     if (!requirements) return;
@@ -275,7 +275,7 @@ export class ExcelService {
 
     // 보호된 셀
     if (requirements.protectedCells) {
-      requirements.protectedCells.forEach(cellRange => {
+      requirements.protectedCells.forEach(_cellRange => {
         // 셀 보호 설정
       });
     }
