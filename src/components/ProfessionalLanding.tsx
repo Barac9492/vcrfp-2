@@ -69,29 +69,32 @@ const ProfessionalLanding = () => {
 
   const mockExtractedData = (fileName: string) => ({
     rfpTitle: fileName.replace(/\.(pdf|docx?|xlsx?|txt)$/i, '').replace(/[-_]/g, ' '),
-    issuer: '한국개발은행 (KDB)',
-    program: '2024년 AI·디지털 전문투자조합 결성 지원사업',
-    deadline: '2024-03-25',
-    fundSize: '1,500억원',
-    confidence: Math.floor(Math.random() * 15) + 85,
+    issuer: '한국정보통신진흥기금 (KIF)',
+    program: '2025년 AI·디지털 혁신 전문투자조합 GP 선정사업',
+    deadline: '2025-08-28',
+    fundSize: '1,500억원 (3개 조합, 각 500억원)',
+    confidence: Math.floor(Math.random() * 10) + 90,
     requiredFields: [
-      { field: '회사명', type: 'text', required: true, description: '법인 등록명' },
-      { field: '설립일', type: 'date', required: true, description: '회사 설립일자' },
-      { field: '대표이사', type: 'text', required: true, description: '대표이사 성명' },
-      { field: 'AUM', type: 'currency', required: true, description: '총 운용자산 규모' },
-      { field: 'GP 출자비율', type: 'percentage', required: true, description: 'GP 최소 출자 비율 (10% 이상)' },
-      { field: '핵심 인력', type: 'array', required: true, description: '투자심의위원회 구성원' },
-      { field: '투자전략', type: 'text', required: true, description: '투자 전략 및 차별화 포인트' },
-      { field: '과거 실적', type: 'file', required: true, description: '최근 5년간 투자 실적' },
-      { field: '재무제표', type: 'file', required: true, description: '최근 3년간 감사보고서' }
+      { field: '운용사명', type: 'text', required: true, description: '법인 등록 정식 회사명' },
+      { field: '설립일자', type: 'date', required: true, description: '회사 설립일 (YYYY.MM.DD)' },
+      { field: '대표자명', type: 'text', required: true, description: '법정 대표자 성명' },
+      { field: '총운용자산(AUM)', type: 'currency', required: true, description: '총 운용자산 규모 (백만원 단위)' },
+      { field: 'GP 출자비율', type: 'percentage', required: true, description: 'GP 최소 출자 비율 (1% 이상)' },
+      { field: '핵심운용인력', type: 'array', required: true, description: '투자팀 핵심 구성원 (최소 3명)' },
+      { field: '투자전략', type: 'text', required: true, description: 'AI·디지털 분야 투자 전략' },
+      { field: '과거투자실적', type: 'file', required: true, description: '최근 5년간 투자 포트폴리오' },
+      { field: '재무실적', type: 'file', required: true, description: '최근 3년간 회계감사보고서' },
+      { field: '의무투자계획', type: 'text', required: true, description: 'AI·디지털 분야 60% 의무투자 계획' }
     ],
     sections: [
-      { name: '사업자 개요', required: 12, optional: 3, completion: 0 },
-      { name: '투자 전략', required: 8, optional: 2, completion: 0 },
-      { name: '조직 및 인력', required: 10, optional: 4, completion: 0 },
-      { name: '운용 계획', required: 15, optional: 2, completion: 0 },
-      { name: '재무 계획', required: 9, optional: 1, completion: 0 },
-      { name: '리스크 관리', required: 6, optional: 3, completion: 0 }
+      { name: '표지', required: 5, optional: 0, completion: 0 },
+      { name: '1-0.제안펀드 구성', required: 8, optional: 2, completion: 0 },
+      { name: '1-1.회사현황', required: 12, optional: 3, completion: 0 },
+      { name: '1-2.재무실적', required: 15, optional: 1, completion: 0 },
+      { name: '1-4.핵심운용인력 관리현황', required: 18, optional: 4, completion: 0 },
+      { name: '2-1.조합 결성실적', required: 10, optional: 2, completion: 0 },
+      { name: '2-2.조합 운용실적', required: 14, optional: 3, completion: 0 },
+      { name: '2-4.투자전략', required: 20, optional: 5, completion: 0 }
     ]
   });
 
@@ -165,9 +168,9 @@ const ProfessionalLanding = () => {
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-                  RFP Response Studio
+                  KIF RFP 자동화 플랫폼
                 </h1>
-                <p className="text-xs text-slate-500">AI-Powered Proposal Generation</p>
+                <p className="text-xs text-slate-500">정부 출자사업 RFP 대응 전문 솔루션</p>
               </div>
             </motion.div>
 
@@ -224,10 +227,10 @@ const ProfessionalLanding = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  Transform RFPs into
+                  정부 출자사업 RFP를
                   <br />
                   <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                    Winning Proposals
+                    완벽한 제안서로 전환
                   </span>
                 </motion.h1>
                 
@@ -237,8 +240,8 @@ const ProfessionalLanding = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  Upload your RFP documents and let our AI analyze requirements, guide you through data collection, 
-                  and generate professional, compliant response packages in minutes.
+                  RFP 문서를 업로드하면 AI가 요구사항을 분석하고, 데이터 수집을 가이드하며, 
+                  전문적이고 규정을 준수하는 제안서 패키지를 몇 분 안에 생성합니다.
                 </motion.p>
 
                 <motion.div
@@ -251,19 +254,19 @@ const ProfessionalLanding = () => {
                     <svg className="h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span>99.2% Accuracy</span>
+                    <span>99.2% 정확도</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <svg className="h-4 w-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span>15min Average</span>
+                    <span>평균 15분 소요</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <svg className="h-4 w-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span>Enterprise Security</span>
+                    <span>엔터프라이즈 보안</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -310,12 +313,12 @@ const ProfessionalLanding = () => {
                       </motion.div>
 
                       <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                        {isDragActive ? 'Drop your RFP files here' : 'Upload RFP Documents'}
+                        {isDragActive ? 'RFP 파일을 여기에 드롭하세요' : 'RFP 문서 업로드'}
                       </h3>
                       
                       <p className="text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                        Drag and drop your RFP documents, or click to browse. 
-                        Supports PDF, Word, Excel, and text files up to 100MB each.
+                        RFP 문서를 드래그 앤 드롭하거나 클릭하여 파일을 선택하세요. 
+                        PDF, Word, Excel, 텍스트 파일을 최대 100MB까지 지원합니다.
                       </p>
 
                       {/* File Type Indicators */}
@@ -346,7 +349,7 @@ const ProfessionalLanding = () => {
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        Select Files to Upload
+                        업로드할 파일 선택
                       </motion.button>
                     </div>
                   </div>
@@ -363,20 +366,20 @@ const ProfessionalLanding = () => {
                 {[
                   {
                     icon: '🤖',
-                    title: 'AI-Powered Analysis',
-                    description: 'Advanced document processing extracts requirements with 99%+ accuracy',
+                    title: 'AI 기반 분석',
+                    description: '고급 문서 처리 기술로 99% 이상의 정확도로 요구사항 추출',
                     color: 'from-blue-500 to-cyan-500'
                   },
                   {
                     icon: '💬',
-                    title: 'Intelligent Guidance',
-                    description: 'Conversational interface guides you through data collection step-by-step',
+                    title: '지능형 가이드',
+                    description: '대화형 인터페이스로 데이터 수집 과정을 단계별로 안내',
                     color: 'from-green-500 to-emerald-500'
                   },
                   {
                     icon: '📊',
-                    title: 'Professional Output',
-                    description: 'Generate submission-ready documents with perfect formatting and compliance',
+                    title: '전문 문서 생성',
+                    description: '완벽한 포맷과 규정 준수로 제출 준비된 문서 자동 생성',
                     color: 'from-purple-500 to-pink-500'
                   }
                 ].map((feature, index) => (
@@ -413,18 +416,18 @@ const ProfessionalLanding = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <h2 className="text-4xl font-bold text-slate-800 mb-4">Document Analysis in Progress</h2>
+                <h2 className="text-4xl font-bold text-slate-800 mb-4">문서 분석 진행 중</h2>
                 <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                  Our AI is carefully analyzing your RFP documents to extract requirements and identify the information needed for your response.
+                  AI가 RFP 문서를 신중하게 분석하여 요구사항을 추출하고 응답에 필요한 정보를 식별하고 있습니다.
                 </p>
               </motion.div>
 
               {/* Processing Steps */}
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {[
-                  { step: 1, title: 'Document Processing', description: 'Reading and parsing content', active: true },
-                  { step: 2, title: 'Requirement Extraction', description: 'Identifying key requirements', active: uploadedFiles.some(f => f.progress > 30) },
-                  { step: 3, title: 'Analysis Complete', description: 'Ready for data collection', active: uploadedFiles.some(f => f.status === 'ready') }
+                  { step: 1, title: '문서 처리', description: '내용 읽기 및 파싱 중', active: true },
+                  { step: 2, title: '요구사항 추출', description: '핵심 요구사항 식별 중', active: uploadedFiles.some(f => f.progress > 30) },
+                  { step: 3, title: '분석 완료', description: '데이터 수집 준비 완료', active: uploadedFiles.some(f => f.status === 'ready') }
                 ].map((step, index) => (
                   <motion.div
                     key={step.step}
